@@ -36,7 +36,7 @@ function Preview() {
 const navigate = useNavigate();
 const handleClosePopup = () => {
   setIsSubmitted(false); // Close the popup
-  navigate('/users'); // Navigate to the dashboard
+  navigate('/vehicle'); // Navigate to the dashboard
 };
   const updateStatus = async (e) => {
     e.preventDefault();

@@ -144,7 +144,7 @@ function Adduser() {
         const response = await axios.post('http://localhost:3002/api/users/add_user', submissionData);
         console.log('Success:', response.data);
         const userId = response.data.userId;
-        navigate(`/preview/${userId}`);
+        navigate(`/preview/${userId}/0`);
       } catch (error) { 
         console.error('Error:', error);
       }

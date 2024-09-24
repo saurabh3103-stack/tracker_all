@@ -2,3 +2,10 @@
     color: #41ab2e;
     background: #f4f4f9;
 }
+.vehicle_deails p{
+    font-size: 17px;
+}
+.vehicle_deails p span{
+    font-size: 18px;
+    font-weight: 600;
+}

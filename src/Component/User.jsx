@@ -34,14 +34,14 @@ function Users() {
     };
     fetchData();
        // Initialize DataTables
-       const table = $("#customButtons").DataTable({
-        lengthMenu: [
-          [5, 10, 25, 50],
-          [5, 10, 25, 50, "All"],
-        ],
-        dom: "Bfrtip", // Buttons on the top
-        buttons: ["copy", "csv", "excel", "pdf", "print"], // Define the buttons
-      });
+      //  const table = $("#customButtons").DataTable({
+      //   lengthMenu: [
+      //     [5, 10, 25, 50],
+      //     [5, 10, 25, 50, "All"],
+      //   ],
+      //   dom: "Bfrtip", // Buttons on the top
+      //   buttons: ["copy", "csv", "excel", "pdf", "print"], // Define the buttons
+      // });
   
       // Cleanup function to destroy DataTable when component unmounts
       // return () => {
@@ -57,7 +57,7 @@ function Users() {
     })  // Fetch data by ID
       .then((response) => {
         setSelectedData(response.data);
-        
+        console.log(response.data);
         setShow(true);  // Show modal
       })
       .catch((error) => {
@@ -141,18 +141,102 @@ function Users() {
                   </table>
                   <Modal show={show} onHide={handleClose} size='xl'>
                   <Modal.Header closeButton>
-                    <Modal.Title>Vehicle Details</Modal.Title>
+                    <Modal.Title className='text-center'>Vehicle Details ({selectedData.e_rickshaw})</Modal.Title>
                   </Modal.Header>
                   <Modal.Body>
                     {loading ? (
                       <p>Loading...</p>
                     ) : selectedData ? (
                       <div>
-                        <p><strong>ID:</strong> {selectedData.id}</p>
-                        <p><strong>Name:</strong> {selectedData.name}</p>
-                        <p><strong>Email:</strong> {selectedData.email}</p>
-                        <p><strong>Phone:</strong> {selectedData.phone}</p>
-                        <p><strong>Website:</strong> {selectedData.website}</p>
+                        <div>
+                          {selectedData.email}
+
+                        </div>
+                        <div className="row">
+                          <div className="col-md-4">
+                            <label className="form-label">E-Rickshaw Photo</label><br/>
+                            <img src={imageUrl+selectedData.rickshaw_photo} className="img-fluid" height="200px" width="200px"/>
+                          </div>
+                          <div className="col-md-4">
+                            <label className="form-label">Owner Photo</label><br/>
+                            <img src={imageUrl+selectedData.owner_photo} className="img-fluid" height="200px" width="200px"/>
+                          </div>
+                          <div className="col-md-4">
+                            <label className="form-label">Driver Photo</label><br/>
+                            <img src={imageUrl+selectedData.d_photo} className="img-fluid" height="200px" width="200px"/>
+                          </div>
+                        </div>
+                        <div className="row mt-4">
+                          <div className="col-md-12">
+                            <div className="card-header">
+                              <h5 className="card-title">Owner Details</h5>
+                            </div>
+                            <div className="card-body vehicle_deails">
+                              <div className="row">
+                                <div className="col-md-4">
+                                  <p><span>Owner Name :</span> {selectedData.owner_name}</p>
+                                </div>
+                                <div className="col-md-4">
+                                  <p><span>Owner Phone :</span> {selectedData.phone_owner}</p>
+                                </div>
+                                <div className="col-md-4">
+                                  <p><span>Owner Email :</span> {selectedData.email}</p>
+                                </div>
+                                <div className="col-md-4">
+                                  <p><span>Aadhar Number :</span> {selectedData.addhar_number}</p>
+                                </div>
+                                <div className="col-md-4">
+                                  <p><span>Owner DL :</span> {selectedData.owner_dl}</p>
+                                </div>
+                                <div className="col-md-4">
+                                  <p><span>E-Rickshaw Number :</span> {selectedData.e_rickshaw}</p>
+                                </div>
+                                <div className="col-md-4">
+                                  <p><span>Chassis :</span> {selectedData.chassis}</p>
+                                </div>
+                                <div className="col-md-4">
+                                  <p><span>Fitness Expiry :</span> {selectedData.chassis}</p>
+                                </div>
+                                <div className="col-md-6">
+                                  <p><span>Address :</span> {selectedData.address_line_f}&nbsp;
+                                  {selectedData.address_line_t}&nbsp;{selectedData.city} &nbsp;{selectedData.state}
+                                  &nbsp;{selectedData.pin}
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="row mt-4">
+                          <div className="col-md-12">
+                            <div className="card-header">
+                              <h5 className="card-title">Driver Details</h5>
+                            </div>
+                            <div className="card-body vehicle_deails">
+                              <div className="row">
+                                <div className="col-md-4">
+                                  <p><span>Driver Name :</span> {selectedData.driver_name}</p>
+                                </div>
+                                <div className="col-md-4">
+                                  <p><span>Driver Phone :</span> {selectedData.d_phone}</p>
+                                </div>
+                               
+                                <div className="col-md-4">
+                                  <p><span>Aadhar Number :</span> {selectedData.d_addhar_number}</p>
+                                </div>
+                                <div className="col-md-4">
+                                  <p><span>Driver DL :</span> {selectedData.d_dl_number}</p>
+                                </div>
+                                <div className="col-md-6">
+                                  <p><span>Address :</span> {selectedData.d_address_line_f}&nbsp;
+                                  {selectedData.d_address_line_t}&nbsp;{selectedData.d_city} &nbsp;{selectedData.d_state}
+                                  &nbsp;{selectedData.d_pin_code}
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     ) : (
                       <p>No data found</p>
