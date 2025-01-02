@@ -144,6 +144,39 @@ function AdminstrationSidebar() {
                 </li>
               </ul>
             </li>
+            <li
+              className={`dropdown ${openDropdown === "finecharge" ? "open" : ""}`}
+            >
+              <Link
+              to="javascript:void(0)"
+                onClick={() => toggleDropdown("finecharge")}
+                className="d-flex align-items-center gap-1 "
+              >
+                <iconify-icon
+                  icon="twemoji:receipt"
+                  className="icon text-lg white-icon"
+                ></iconify-icon>
+                <span>Fine/Charges</span>
+              </Link>
+              <ul
+                className={`sidebar-submenu ${
+                  openDropdown === "finecharge" ? "show" : "hide"
+                }`}
+              >
+                <li>
+                  <Link to="/administration/add-fine-charges">
+                  <i className="ri-circle-fill circle-icon" style={{ fontSize: '24px', color: '#007bff', width: 'auto', height: 'auto' }}></i>
+                  Add Fine/Charges
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/administration/fine-charges">
+                  <i className="ri-circle-fill circle-icon" style={{ fontSize: '24px', color: '#007bff', width: 'auto', height: 'auto' }}></i>
+                  Fine/Charges
+                  </Link>
+                </li>
+              </ul>
+            </li>
             <li>
               <Link
                 to="administration/challan"

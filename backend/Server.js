@@ -19,7 +19,7 @@ const zonehead = require('./routes/zonehead');
 const verifier = require('./routes/verifier');
 const admin = require('./routes/admin');
 const subAdmin = require('./routes/subAdmin');
-
+const loginUser = require('./routes/loginUser');
 // Vehicle Reg
 
 const ownerRoutes = require('./routes/owner');
@@ -52,6 +52,11 @@ app.use('/api/vehicle', vehicleRoutes);
 app.use('/api/vehicle-document', vehicleDocumentRoutes);
 app.use('/api/driver', driverRoutes);
 
+// Start Android app Routes
+
+app.use('/api/otp',loginUser);
+
+// End Android app Routes
 
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);

@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { toast } from 'react-toastify';
-import { Toaster } from 'react-hot-toast';
-// import Input_ from 'postcss/lib/input';
+import { Toaster, toast } from 'react-hot-toast';// Assuming you're using react-toastify for notifications
 
 const VechileRegistration3 = ({ ownerId,refId, increment }) => {
   const [formData, setFormData] = useState({
@@ -303,7 +301,7 @@ const VechileRegistration3 = ({ ownerId,refId, increment }) => {
             </div>
               </div>
           </div> 
-        <button type="submit" className="btn btn-success">Register Driver</button>
+        <button type="submit" className="btn btn-success float-end">Register Driver</button>
       </form>
     </div>
     </>
